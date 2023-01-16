@@ -11,12 +11,22 @@ func main() {
 		"name": "John Doe",
 		"age":  30,
 		"address": map[string]interface{}{
-			"street": "Main St",
-			"city":   "New York",
-			"state":  "NY",
+			"street": "123 Main St",
+			"city":   "Anytown",
+			"state":  "XX",
+			"zip":    "12345",
 		},
 	}
-	if err := map2json.Convert(m, "data.json"); err != nil {
-		fmt.Println(err)
+
+	// convert map to json and write to a file
+	if err := map2json.ToJson(m, "example.json"); err != nil {
+		fmt.Println("Error while converting to json:", err)
 	}
+
+	// convert json file to map
+	result, err := map2json.ToMap("example.json")
+	if err != nil {
+		fmt.Println("Error while converting to map:", err)
+	}
+	fmt.Println(result)
 }
