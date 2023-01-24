@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+//Convert map to json function
 func ToJson(m map[string]interface{}, filename string) error {
 	file, err := os.Create(filename)
 	if err != nil {
@@ -17,6 +18,7 @@ func ToJson(m map[string]interface{}, filename string) error {
 	return enc.Encode(m)
 }
 
+//Convert json file to map
 func ToMap(filename string) (map[string]interface{}, error) {
 	file, err := os.Open(filename)
 	if err != nil {
